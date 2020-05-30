@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    transition: 0.9s;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: rgb(16, 148, 224);
+}
+
+
+div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+
+
+}
+
+form {
+
+    background: rgb(0, 20, 32);
+
+    padding: 5vh 7vw;
+    font-size: 20px;
+    color: #ddd;
+}
