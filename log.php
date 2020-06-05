@@ -13,12 +13,20 @@ session_start();
     <link rel="stylesheet" type="text/css" href="stylelog.css">
     
 </head>
+
+  
 <body>
+<div class="nav">
+    <a href="index.html" class="glow">Strona główna</a>
+    <a href="specjalisci.html" class="spec">Specjaliści</a>
+    <a href="log.php" class="log1">Logowanie</a>
+  </div>
+
 <div>
 <a href="rejestracja.php">Rejestracja</a>
 </div>
 
-<div>
+<div class="forma">
 
     <form action="zaloguj.php" method="post" >
    
@@ -29,11 +37,11 @@ session_start();
     </select>
     <br />
 
-        login: <br/> <input type="text" name="login" /> <br />
-        hasło: <br/> <input type="password" name="haslo" /> <br />
+       <p> login:</p> <input type="text" name="login" /> 
+        <p>hasło: </p> <input type="password" name="haslo" /> <br/>
 
-        <input type="submit" value="zaloguj się">
-        <br/>
+        <input type="submit" value="zaloguj się" class="btn">
+        
         <?php
 
 if(isset($_SESSION['blad']))
