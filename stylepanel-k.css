@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+    transition: 0.8s;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: rgb(16, 148, 224);
+}
+
+
+
+div.dodajz {
+    margin-bottom: 46px;
+    background-color: rgb(6, 66, 100);
+    height: 450px;
+}
+
+
+form {
+    display: block;
+
+    width: 100%;
+    background: rgb(6, 66, 100);
+    margin: 0 auto;
+    padding: 0 30px;
+    font-size: 20px;
+    color: #ddd;
+    text-align: center;
+    margin-bottom: 52px;
+
+}
+
+p.dodz {
+    transition: none;
+    display: block;
+    font-size: 24px;
+    padding: 30px;
+    text-align: center;
+    background-color: rgb(6, 66, 100);
+
+
+
+}
+
+p.brakzwierzaka {
+    color: #ddd;
+    font-size: 24px;
+    line-height: 62px;
+    background-color: rgb(6, 66, 100);
+    margin-bottom: 6px;
+    text-align: center;
+
+}
+
+
+
+p.witaj {
+    float: left;
+    display: block;
+    transition: none;
+    background-color: rgb(0, 20, 32);
+    border: none;
+    color: white;
+    padding: 20px 34px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    margin-top: 0;
+    width: 60%;
+    margin-bottom: 46px;
+}
+
+
+
+
+a {
+    display: block;
+    float: left;
+    width: 40%;
+    transition: none;
+    padding: auto;
+    background-color: rgb(0, 20, 32);
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 20px 34px;
+    margin-bottom: 46px;
+
+}
+
+a:hover {
+    background-color: #ddd;
+    color: rgb(0, 20, 32);
+}
+
+
+
+
+
+
+
+div.zwierzaki {
+
+    padding: 16px 16px 16px 82px;
+    background: rgb(6, 66, 100);
+    color: #ddd;
+    display: block;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 6px;
+
+}
+
+div.zwierzaki:hover {
+
+    transform: scale(1.06);
+
+    background: rgb(0, 20, 32);
+}
+
+div.cennik1 {
+    margin-top: 0;
+    padding: 0;
+    background-color: rgb(6, 66, 100);
+    display: block;
+    float: left;
+    width: 50%;
+
+    height: 39.9vh;
+}
+
+p.cennik-p {
+    padding-left: 32px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+
+}
+
+p.cennik-c {
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+div.przycisk {
+    margin: auto;
+
+
+    margin-top: 46px;
+
+    padding: 0;
+    background-color: rgb(6, 66, 100);
+    width: auto;
+
+
+    text-align: center;
+
+    height: 150px;
+}
+
+select {
+
+    margin-top: 32px;
+    font-size: 13px;
+    background-color: #ddd;
+    color: rgb(0, 20, 32);
+}
+
+/* 1 */
+
+/* 2 */
+p {
+    transition: none;
+    color: #ddd;
+    font-size: 22px;
+}
+
+p.twzw {
+    color: #ddd;
+    font-size: 24px;
+    line-height: 62px;
+    background-color: rgb(6, 66, 100);
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+p.przycisk-p {
+    padding-top: 13px;
+}
+
+.btn {
+    background-color: rgb(16, 148, 224);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    cursor: pointer;
+    margin: 16px 12px;
+    float: left;
+    display: block;
+}
+
+.btn:hover {
+    background-color: #ddd;
+    color: rgb(0, 20, 32);
+}
+
+select {
+    display: block;
+    float: left;
+    font-size: 14px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn1 {
+    background-color: rgb(16, 148, 224);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    cursor: pointer;
+    margin: 16px 12px;
+
+
+}
+
+.btn1:hover {
+    background-color: #ddd;
+    color: rgb(0, 20, 32);
+}
+
+input {
+    padding: 8px 14px;
+}

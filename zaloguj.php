@@ -17,7 +17,7 @@ else{
    
     if($wybor == '1'){
     
-        $sql = " SELECT * FROM klient WHERE login ='$login' AND haslo ='$haslo'; ";
+        $sql = " SELECT * FROM klient WHERE login ='$login';";
 
     if ($rezultat = @$polaczenie->query($sql))
     {
@@ -29,6 +29,7 @@ else{
             $wiersz = $rezultat->fetch_assoc();
             $_SESSION['login'] = $wiersz['login'];
             $_SESSION['pesel'] = $wiersz['pesel'];
+            $_SESSION['id'] = $wiersz['id'];
 
             $rezultat->free_result();
 
@@ -45,7 +46,7 @@ else{
 
  if($wybor == '2'){
     
-    $sql = " SELECT * FROM asystent WHERE login ='$login' AND haslo ='$haslo'; ";
+    $sql = " SELECT * FROM asystent WHERE login ='$login'; ";
 
 if ($rezultat = @$polaczenie->query($sql))
 {
@@ -73,7 +74,7 @@ if ($rezultat = @$polaczenie->query($sql))
 
 if($wybor == '3'){
     
-    $sql = " SELECT * FROM weterynarz WHERE login ='$login' AND haslo ='$haslo'; ";
+    $sql = " SELECT * FROM weterynarz WHERE login ='$login'; ";
 
 if ($rezultat = @$polaczenie->query($sql))
 {

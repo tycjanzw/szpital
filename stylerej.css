@@ -15,16 +15,75 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;
 
+}
 
+form:hover {
+    transform: scale(1.064);
 }
 
 form {
 
     background: rgb(0, 20, 32);
-
-    padding: 5vh 7vw;
+    padding: 30px 70px;
     font-size: 20px;
     color: #ddd;
+    margin-bottom: 10vh;
+}
+
+
+a {
+
+    background-color: rgb(0, 20, 32);
+    border: none;
+    color: white;
+    padding: 20px 34px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-top: 10vh;
+    margin-bottom: 3vh;
+    cursor: pointer;
+}
+
+a:hover {
+    transform: scale(1.3);
+    background-color: #ddd;
+    color: rgb(0, 20, 32);
+}
+
+.btn {
+    background-color: rgb(16, 148, 224);
+    border: none;
+    color: white;
+    padding: 15px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    cursor: pointer;
+    margin: 16px 0;
+
+}
+
+.btn:hover {
+    background-color: #ddd;
+    color: rgb(0, 20, 32);
+}
+
+input {
+    width: 100%;
+    padding: 4px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+div p {
+    text-transform: capitalize;
+    transition: none;
+    font-size: 18px;
+    margin: 10px 0 10px;
 }
