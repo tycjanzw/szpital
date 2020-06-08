@@ -10,6 +10,7 @@ if (isset($_POST['imie']))
     $data = $_POST['data'];
     $login = $_SESSION['login'];
     $id_klient = $_SESSION['id'];
+    $id_zwierze = 
     // $typ_uslugi= $_POST['typ_uslugi'];
     // $cena = $_POST['cena'];
     
@@ -171,7 +172,20 @@ Data urodzenia:<br/><input type="date" name="data" /><br/>
         
         while($row = $historia->fetch_assoc())
         {
-            echo '<div class = "zwierzaki">'.'<p class ="zwierzaki">Imię: '.$row['imie'].'</p>'.'<p class ="zwierzaki">Rodzaj zwierzaka: '.$row['typ'].'</p>'.'<p class ="zwierzaki">Rasa: '.$row['rasa'].'</p>'.'<p class ="zwierzaki">Waga: '.$row['waga'].' kg'.'</p>'.'<p class ="zwierzaki">Data urodzenia: '.$row['data'].'</p>'.'</div>';
+            echo '<div class = "zwierzaki">'.'<p class ="zwierzaki">Imię: '.$row['imie'].'</p>'.'<p class ="zwierzaki">Rodzaj zwierzaka: '.$row['typ'].'</p>'.'<p class ="zwierzaki">Rasa: '.$row['rasa'].'</p>'.'<p class ="zwierzaki">Waga: '.$row['waga'].' kg'.'</p>'.'<p class ="zwierzaki">Data urodzenia: '.$row['data'].'</p>'.'</div>'.'
+            <form method="post">
+         <select class="select" name="usluga">
+            <option value = "1">Szczepienie okresowe psa</option>
+            <option value = "2">Podstawowe badanie</option>
+            <option value = "3">Odrobaczanie</option>
+            <option value = "4">Sterylizacja/kastracja</option>
+            <option value = "5">Zwalczanie pcheł</option>
+            <option value = "6">Konsultacja weterynaryjna</option>
+            <option value = "7">Chipowanie</option>
+            <option value = "8">Stomatolog</option>
+        </select>
+        <button type="submit" value="'.$row["id"].'" class="btn" name="wybor_uslugi">Zamów usługę</button>
+        </form>';
             
                     
         }
@@ -190,7 +204,7 @@ Data urodzenia:<br/><input type="date" name="data" /><br/>
     <p class="przycisk-p">Wybierz usługę </p>
 
 
-
+<!-- 
     <form method="post">
  <select class="select" name="usluga">
     <option value = "1">Szczepienie okresowe psa</option>
@@ -203,7 +217,7 @@ Data urodzenia:<br/><input type="date" name="data" /><br/>
     <option value = "8">Stomatolog</option>
 </select>
 <input type="submit" value="Zamów usługę" class="btn" name="usluga_kupiona">
-</form>
+</form> -->
 
 <div class="cennik1">
     <p class="cennik-p">szczepienie</p>
@@ -228,35 +242,47 @@ Data urodzenia:<br/><input type="date" name="data" /><br/>
 
 <div class="forma">
 <?php
-// session_start();
+// DODANIE USŁUGI
+
+$klient_id= $_SESSION['id'];
 require_once "connect.php";
-if(isset($_POST['usluga']))
+
+if(isset($_POST['wybor_uslugi']))
 {
     $wybor_uslugi = $_POST['usluga'];
-    $klient_id= $_SESSION['id'];
+    $zwierzeId = $_POST['wybor_uslugi'];
+    echo "Dziala";
+   echo "$zwierzeId ";
+  echo "$wybor_uslugi";
+     $sql = mysqli_query($polaczenie, 'INSERT INTO usluga_has_zwierze VALUES ('.$wybor_uslugi.','.$zwierzeId.')');
+} 
+else{
+    echo "Nie udało się dodać usługi";
 }
 
-
-
-// DODANIE USŁUGI I HISTORIA
-
-$sql = mysqli_query($polaczenie, 'SELECT typ_uslugi, cena FROM usluga INNER JOIN usluga_has_klient ON usluga_has_klient.usluga_id = usluga.id INNER JOIN klient ON usluga_has_klient.klient_id = klient.id WHERE klient.id = '.$klient_id.'');
-
-echo $wybor_uslugi;
-echo $klient_id;
+//  HISTORIA USŁUG
+if(isset($_POST['wybor_uslugi'])){
+$sql = mysqli_query($polaczenie, 'SELECT imie, typ_uslugi, cena FROM usluga INNER JOIN usluga_has_zwierze ON usluga_has_zwierze.usluga_id = usluga.id INNER JOIN zwierze ON usluga_has_zwierze.zwierze_id = zwierze.id WHERE zwierze.id = '.$zwierzeId.'');
 
 if($sql->num_rows > 0)
     {
         
         while($row = $sql->fetch_assoc())
         {
-            echo '<div class = "zwierzaki">'.'<p class ="zwierzaki">Typ uslugi: '.$row['typ_uslugi'].'</p>'.'<p class ="zwierzaki">cena: '.$row['cena'].'</div>';
+            echo '<div class = "zwierzaki">'.'<p class ="zwierzaki">Imie: '.$row['imie'].'</p>'.'<p class ="zwierzaki">Typ uslugi: '.$row['typ_uslugi'].'</p>'.'<p class ="zwierzaki">cena: '.$row['cena'].'</div>';
             
                     
         }
-    } else {
-        echo "Nie masz żadnej usługi";
+
+    } 
+    else {
+        
     }
+}else{
+    
+    echo "Nie masz żadnej usługi";
+
+}
 
 ?>
 </div>
