@@ -11,20 +11,6 @@ if (isset($_POST['imie']))
     $login = $_SESSION['login'];
     $id_klient = $_SESSION['id'];
     $id_zwierze = 
-    // $typ_uslugi= $_POST['typ_uslugi'];
-    // $cena = $_POST['cena'];
-    
-    // echo $id_klient;
-
-
-    // // $email = $_POST['email'];
-	// 	$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-		
-	// 	if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
-	// 	{
-	// 		$wszystko_OK=false;
-	// 		$_SESSION['e_email']="Podaj poprawny adres e-mail!";
-	// 	}
 
 require_once "connect.php";
 		mysqli_report(MYSQLI_REPORT_STRICT);
@@ -41,38 +27,12 @@ require_once "connect.php";
                 else {
 
 
-                // //    email
-                //     $rezultat = $polaczenie->query("SELECT id FROM klient WHERE email = '$email'");
-
-                //     if(!$rezultat) throw new Exception($polaczenie->error);
-
-                //     $ile_takich_maili = $rezultat->num_rows;
-                    
-                //     if($ile_takich_maili>0)
-                //     {
-                //         $wszystko_OK = false;
-                //         $_SESSION['e_email'] = "<span style='color:red;'> Email $email jest już zajęty!</span>";
-                //     }
-
-
-
-                // //   login
-                //     $rezultat = $polaczenie->query("SELECT id FROM klient WHERE login = '$login'");
-
-                //     if(!$rezultat) throw new Exception($polaczenie->error);
-
-                //     $ile_takich_loginow = $rezultat->num_rows;
-                    
-                //     if($ile_takich_loginow>0)
-                //     {
-                //         $wszystko_OK = false;
-                //         $_SESSION['e_login'] = "<span style='color:red;'>Login $login jest już zajęty!</span>";
-                //     }
+             
 
               
                      if($wszystko_OK == true)
                       {
-                        //   INSERT INTO `zwierze`(`id`, `imie`, `typ`, `rasa`, `waga`, `data`, `klient_id`) VALUES ("NULL,'$imie','$typ','$rasa','$waga','$data','$id_klient'")
+                     
                         if($polaczenie->query("INSERT INTO `zwierze`(`id`, `imie`, `typ`, `rasa`, `waga`, `data`, `klient_id`) VALUES (NULL,'$imie','$rodzaj','$rasa','$waga','$data','$id_klient')")) 
                         {
                             $_SESSION['udane'] = true;
@@ -93,9 +53,7 @@ require_once "connect.php";
 
 
         }
-       
-			
-		
+
         
         catch(Exception $e)
 		{
@@ -103,12 +61,6 @@ require_once "connect.php";
 			echo '<br />Informacja developerska: '.$e;
 		}
 		
-		
-    
-
-
-
-
 
     if($wszystko_OK==true)
     { 
@@ -204,20 +156,6 @@ Data urodzenia:<br/><input type="date" name="data" /><br/>
     <p class="przycisk-p">Wybierz usługę </p>
 
 
-<!-- 
-    <form method="post">
- <select class="select" name="usluga">
-    <option value = "1">Szczepienie okresowe psa</option>
-    <option value = "2">Podstawowe badanie</option>
-    <option value = "3">Odrobaczanie</option>
-    <option value = "4">Sterylizacja/kastracja</option>
-    <option value = "5">Zwalczanie pcheł</option>
-    <option value = "6">Konsultacja weterynaryjna</option>
-    <option value = "7">Chipowanie</option>
-    <option value = "8">Stomatolog</option>
-</select>
-<input type="submit" value="Zamów usługę" class="btn" name="usluga_kupiona">
-</form> -->
 
 <div class="cennik1">
     <p class="cennik-p">szczepienie</p>
@@ -251,38 +189,35 @@ if(isset($_POST['wybor_uslugi']))
 {
     $wybor_uslugi = $_POST['usluga'];
     $zwierzeId = $_POST['wybor_uslugi'];
-    echo "Dziala";
-   echo "$zwierzeId ";
-  echo "$wybor_uslugi";
+//     echo "Dziala";
+//    echo "$zwierzeId ";
+//   echo "$wybor_uslugi";
      $sql = mysqli_query($polaczenie, 'INSERT INTO usluga_has_zwierze VALUES ('.$wybor_uslugi.','.$zwierzeId.')');
 } 
-else{
-    echo "Nie udało się dodać usługi";
-}
 
 //  HISTORIA USŁUG
-if(isset($_POST['wybor_uslugi'])){
-$sql = mysqli_query($polaczenie, 'SELECT imie, typ_uslugi, cena FROM usluga INNER JOIN usluga_has_zwierze ON usluga_has_zwierze.usluga_id = usluga.id INNER JOIN zwierze ON usluga_has_zwierze.zwierze_id = zwierze.id WHERE zwierze.id = '.$zwierzeId.'');
-
-if($sql->num_rows > 0)
+// if(isset($_POST[''])){
+$sql3 = mysqli_query($polaczenie, 'SELECT zwierze.imie, typ_uslugi, cena FROM usluga INNER JOIN usluga_has_zwierze ON usluga_has_zwierze.usluga_id = usluga.id INNER JOIN zwierze ON usluga_has_zwierze.zwierze_id = zwierze.id INNER JOIN klient ON klient.id = zwierze.klient_id WHERE klient.id = '.$klient_id.'');
+// AND klient.id = '.$klient_id.'
+if($sql3->num_rows > 0)
     {
-        
-        while($row = $sql->fetch_assoc())
+          echo '<p class ="zwierzaki">Historia usług:';
+        while($row = $sql3->fetch_assoc())
         {
-            echo '<div class = "zwierzaki">'.'<p class ="zwierzaki">Imie: '.$row['imie'].'</p>'.'<p class ="zwierzaki">Typ uslugi: '.$row['typ_uslugi'].'</p>'.'<p class ="zwierzaki">cena: '.$row['cena'].'</div>';
+            echo '<div class = "zwierzaki">'.'<p class ="zwierzaki">Imie zwierzaka: '.$row['imie'].'</p>'.'<p class ="zwierzaki">Typ uslugi: '.$row['typ_uslugi'].'</p>'.'<p class ="zwierzaki">cena: '.$row['cena'].'</div>';
             
                     
         }
 
     } 
     else {
-        
+        echo "To nie działa!";
     }
-}else{
+// }else{
     
-    echo "Nie masz żadnej usługi";
+//     echo "Nie masz żadnej usługi";
 
-}
+// }
 
 ?>
 </div>
